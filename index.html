@@ -3,38 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Caffi Ceirw — Country Park Café</title>
-  <meta name="description" content="Caffi Ceirw — a gorgeous independent café at Golden Grove (Gelli Aur) Country Park with views over the former deer park. Dogs welcome." />
+  <title>Caffi Ceirw — Golden Grove Country Park</title>
+  <meta name="description" content="Caffi Ceirw — a small family-run café at Golden Grove (Gelli Aur) Country Park. Deep green, off-white and warm wood tones." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Country-park palette */
-      --cream:#F6F1E8;
-      --paper:#FFFDF8;
+      /* Palette: deep green + off-white + warm brown */
+      --offwhite:#F7F4EE;
+      --paper:#FFFDFA;
       --ink:#141414;
-      --muted: rgba(20,20,20,.72);
-      --mist: rgba(255,255,255,.62);
+      --muted: rgba(20,20,20,.70);
 
-      --moss:#1F3A2B;
-      --pine:#153022;
-      --fern:#2F5A40;
-
-      --oak:#6A4A2F;
-      --clay:#7A3B2A;
-      --gold:#B99252;
-
+      --green:#143226;     /* deep green */
+      --green2:#0F281E;    /* darker */
+      --brown:#6B4A2F;     /* warm wood */
       --stone:#E7DED0;
-      --shadow: 0 18px 55px rgba(0,0,0,.10);
-      --shadowSoft: 0 10px 28px rgba(0,0,0,.09);
-      --ring: 0 0 0 3px rgba(185,146,82,.24);
 
-      --radius: 18px;
-      --max: 1120px;
+      --radius: 16px;
+      --shadow: 0 14px 40px rgba(0,0,0,.10);
+      --shadowSoft: 0 10px 26px rgba(0,0,0,.08);
+      --ring: 0 0 0 3px rgba(20,50,38,.22);
+
+      --max: 980px; /* smaller, more “local café” */
     }
 
     *{box-sizing:border-box}
@@ -42,19 +37,19 @@
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--offwhite);
       color: var(--ink);
-      background: var(--cream);
-      line-height: 1.55;
+      line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
-    .container{width: min(var(--max), calc(100% - 40px)); margin: 0 auto;}
+    .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto;}
 
-    /* Top bar */
+    /* Header */
     .topbar{
       position: sticky;
       top:0;
       z-index: 50;
-      background: rgba(246,241,232,.92);
+      background: rgba(247,244,238,.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--stone);
     }
@@ -62,279 +57,255 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap: 14px;
-      padding: 14px 0;
+      gap:12px;
+      padding: 12px 0;
     }
-
     .brand{
       display:flex;
       align-items:center;
-      gap: 12px;
-      min-width: 230px;
+      gap:10px;
+      min-width: 220px;
     }
     .mark{
-      width: 44px; height: 44px;
+      width:40px;height:40px;
       border-radius: 14px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, var(--pine), var(--moss));
+      display:grid;place-items:center;
+      background: linear-gradient(135deg, var(--green), var(--green2));
       box-shadow: var(--shadowSoft);
-      color: #fff;
-      font-family: "Fraunces", Georgia, serif;
-      font-weight: 700;
-      letter-spacing: .02em;
+      color:#fff;
+      font-family:"Fraunces", Georgia, serif;
+      font-weight:700;
+      letter-spacing:.02em;
     }
     .brand-title{line-height:1.1}
     .brand-title strong{
       display:block;
-      font-family: "Fraunces", Georgia, serif;
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -.01em;
+      font-family:"Fraunces", Georgia, serif;
+      font-weight:700;
+      font-size: 16px;
+      letter-spacing:-.01em;
     }
     .brand-title span{
       display:block;
       font-size: 12px;
       color: rgba(20,20,20,.62);
-      margin-top: 2px;
+      margin-top:2px;
     }
 
     nav{
       display:flex;
+      gap:12px;
       align-items:center;
-      gap: 16px;
       flex-wrap:wrap;
       justify-content:center;
     }
     nav a{
       font-size: 13px;
       color: rgba(20,20,20,.78);
-      padding: 8px 10px;
+      padding: 7px 9px;
       border-radius: 12px;
-      transition: 160ms ease;
+      transition: 150ms ease;
     }
-    nav a:hover{color: var(--clay); background: rgba(231,222,208,.65);}
+    nav a:hover{color: var(--brown); background: rgba(231,222,208,.6);}
 
-    .actions{display:flex; align-items:center; gap: 10px; min-width: 250px; justify-content:flex-end;}
+    .actions{display:flex; align-items:center; gap:10px; justify-content:flex-end;}
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
-      padding: 11px 14px;
+      padding: 10px 12px;
       border-radius: 14px;
       font-size: 13px;
       font-weight: 650;
       border: 1px solid var(--stone);
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.70);
       transition: 160ms ease;
-      box-shadow: 0 1px 0 rgba(0,0,0,.03);
       white-space:nowrap;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
     }
     .btn:hover{transform: translateY(-1px); box-shadow: var(--shadowSoft);}
     .btn:focus{outline:none; box-shadow: var(--shadowSoft), var(--ring);}
     .btn.primary{
-      color: #fff;
-      border-color: rgba(31,58,43,.45);
-      background: linear-gradient(135deg, var(--moss), var(--pine));
+      background: var(--green);
+      border-color: rgba(20,50,38,.45);
+      color:#fff;
     }
     .btn.primary:hover{opacity:.92}
 
-    /* Mobile nav */
-    .mobile-nav{display:none; padding: 0 0 12px;}
+    .mobile-nav{display:none; padding: 0 0 10px;}
     .mobile-nav a{
       display:inline-block;
       margin: 6px 6px 0 0;
       font-size: 13px;
-      padding: 8px 10px;
+      padding: 7px 9px;
       border-radius: 12px;
       border: 1px solid var(--stone);
-      background: rgba(255,255,255,.56);
+      background: rgba(255,255,255,.55);
     }
 
-    /* Hero */
+    /* Hero (smaller) */
     .hero{
-      position: relative;
-      overflow:hidden;
       border-bottom: 1px solid var(--stone);
       background:
-        radial-gradient(1100px circle at 15% 0%, rgba(185,146,82,.22), transparent 60%),
-        radial-gradient(900px circle at 85% 25%, rgba(47,90,64,.22), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.46), rgba(255,255,255,0));
+        radial-gradient(900px circle at 15% 0%, rgba(20,50,38,.18), transparent 60%),
+        radial-gradient(900px circle at 85% 35%, rgba(107,74,47,.16), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,0));
     }
     .hero-inner{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 28px;
-      padding: 56px 0 44px;
-      align-items: center;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      padding: 40px 0 28px;
+      align-items: start;
     }
     .pill{
       display:inline-flex;
       align-items:center;
       gap: 8px;
-      padding: 7px 12px;
+      padding: 6px 10px;
       border-radius: 999px;
       border:1px solid var(--stone);
       background: rgba(255,255,255,.62);
       font-size: 12px;
       font-weight: 700;
-      color: var(--moss);
-      letter-spacing: .01em;
+      color: var(--green);
+      letter-spacing:.01em;
     }
     h1{
-      margin: 16px 0 10px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 54px;
-      line-height: 1.02;
-      letter-spacing: -.02em;
+      margin: 12px 0 10px;
+      font-family:"Fraunces", Georgia, serif;
+      font-size: 40px;
+      line-height:1.05;
+      letter-spacing:-.02em;
     }
     .hero p{
-      margin: 16px 0 0;
+      margin: 10px 0 0;
       color: var(--muted);
-      max-width: 58ch;
-      font-size: 15px;
+      max-width: 60ch;
+      font-size: 14px;
     }
     .hero-ctas{
-      margin-top: 22px;
+      margin-top: 16px;
       display:flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       align-items:center;
     }
 
-    .kpi-grid{
-      margin-top: 26px;
+    .mini-cards{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
     }
-    .kpi{
+    .mini-card{
       border-radius: var(--radius);
-      border: 1px solid var(--stone);
-      background: rgba(255,255,255,.68);
-      padding: 14px;
+      border:1px solid var(--stone);
+      background: rgba(255,255,255,.70);
+      padding: 12px 14px;
+      font-size: 13px;
+      color: rgba(20,20,20,.74);
       box-shadow: 0 1px 0 rgba(0,0,0,.03);
     }
-    .kpi strong{display:block; color: var(--moss); font-size: 13px; margin-bottom: 6px;}
-    .kpi span{display:block; color: rgba(20,20,20,.70); font-size: 12.5px;}
+    .mini-card strong{color: var(--green); display:block; margin-bottom:4px; font-size: 13px;}
 
-    .hero-card{
-      border-radius: calc(var(--radius) + 4px);
+    .side{
+      border-radius: calc(var(--radius) + 2px);
       border: 1px solid var(--stone);
       background: rgba(255,255,255,.72);
       box-shadow: var(--shadow);
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
+      padding: 16px;
     }
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(700px circle at 25% 20%, rgba(185,146,82,.20), transparent 55%),
-        radial-gradient(700px circle at 80% 70%, rgba(47,90,64,.18), transparent 55%);
-      pointer-events:none;
-    }
-    .hero-card > *{position: relative;}
-    .hero-card h3{
+    .side h3{
       margin:0;
       font-family:"Fraunces", Georgia, serif;
-      font-size: 22px;
-      letter-spacing: -.01em;
+      font-size: 18px;
+      letter-spacing:-.01em;
     }
-    .hero-card p{margin: 10px 0 16px; color: rgba(20,20,20,.70); font-size: 13.5px;}
-    .divider{height:1px; background: var(--stone); margin: 16px 0;}
-    .mini{font-size: 12.5px; color: rgba(20,20,20,.72);}
+    .side p{margin: 8px 0 12px; color: rgba(20,20,20,.70); font-size: 13.5px;}
+    .divider{height:1px; background: var(--stone); margin: 12px 0;}
+    .small{font-size: 12.5px; color: rgba(20,20,20,.70);}
 
-    /* Sections */
-    section{padding: 54px 0;}
+    /* Sections (tighter) */
+    section{padding: 36px 0;}
     .section-head{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
-      gap: 18px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 22px;
+      margin-bottom: 14px;
     }
     .section-head h2{
-      margin: 10px 0 0;
+      margin: 8px 0 0;
       font-family:"Fraunces", Georgia, serif;
-      font-size: 34px;
-      letter-spacing: -.02em;
+      font-size: 26px;
+      letter-spacing:-.02em;
     }
-    .section-head p{margin:0; max-width: 64ch; color: var(--muted); font-size: 14px;}
+    .section-head p{
+      margin:0;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
 
-    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px;}
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
     .card{
       border-radius: var(--radius);
       border: 1px solid var(--stone);
       background: rgba(255,255,255,.70);
-      box-shadow: 0 1px 0 rgba(0,0,0,.03);
-      padding: 18px;
+      padding: 14px;
       transition: 160ms ease;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
     }
     .card:hover{transform: translateY(-2px); box-shadow: var(--shadowSoft);}
     .card h3{
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       font-family:"Fraunces", Georgia, serif;
-      font-size: 22px;
-      letter-spacing: -.01em;
+      font-size: 18px;
     }
     .card p{margin:0; color: rgba(20,20,20,.72); font-size: 13.5px;}
-    .card ul{margin: 12px 0 0; padding-left: 18px; color: rgba(20,20,20,.72); font-size: 13.5px;}
-    .card li{margin: 6px 0;}
 
-    /* Menu list */
-    .menu{display:grid; grid-template-columns: 1fr 1fr; gap: 16px;}
-    .menu-item{padding: 14px 0; border-bottom: 1px dashed rgba(231,222,208,.95);}
-    .menu-item:last-child{border-bottom:none;}
-    .menu-item .row{display:flex; justify-content:space-between; gap: 16px; align-items:baseline;}
-    .menu-item .name{font-weight: 750;}
-    .menu-item .price{color: rgba(20,20,20,.60); font-size: 13px;}
-    .menu-item .desc{color: rgba(20,20,20,.70); font-size: 13px; margin-top: 4px;}
+    /* Menu (simple list) */
+    .menu-list{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+    .menu-block{padding: 14px;}
+    .item{padding: 10px 0; border-bottom: 1px dashed rgba(231,222,208,.95);}
+    .item:last-child{border-bottom:none}
+    .row{display:flex; justify-content:space-between; gap: 14px; align-items:baseline;}
+    .name{font-weight: 700;}
+    .price{font-size: 13px; color: rgba(20,20,20,.58);}
+    .desc{margin-top:4px; font-size: 13px; color: rgba(20,20,20,.70);}
 
-    /* Gallery placeholders */
-    .gallery{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
+    /* Gallery placeholders (smaller) */
+    .gallery{display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;}
     .ph{
       border-radius: var(--radius);
       border: 1px solid var(--stone);
       background:
-        linear-gradient(135deg, rgba(21,48,34,.22), rgba(106,74,47,.14)),
-        radial-gradient(700px circle at 30% 30%, rgba(185,146,82,.15), transparent 55%);
+        linear-gradient(135deg, rgba(20,50,38,.22), rgba(107,74,47,.14));
       aspect-ratio: 4 / 3;
       display:grid;
       place-items:center;
-      color: rgba(255,255,255,.94);
+      color: rgba(255,255,255,.92);
       font-weight: 800;
-      letter-spacing: .02em;
-      box-shadow: 0 1px 0 rgba(0,0,0,.03);
-      position: relative;
-      overflow:hidden;
+      font-size: 12px;
+      letter-spacing:.02em;
     }
-    .ph::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(900px circle at 50% 120%, rgba(0,0,0,.22), transparent 55%);
-      pointer-events:none;
-    }
-    .ph span{position:relative;}
-
-    /* Info + contact */
-    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap: 16px;}
-    .note{font-size: 12.5px; color: rgba(20,20,20,.65); margin-top: 10px;}
 
     /* Footer */
     footer{
       border-top: 1px solid var(--stone);
       background: rgba(255,255,255,.40);
-      padding: 26px 0;
+      padding: 22px 0;
     }
     .footer-inner{
       display:flex;
       justify-content:space-between;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
       color: rgba(20,20,20,.65);
       font-size: 12.5px;
@@ -345,13 +316,10 @@
       nav{display:none}
       .mobile-nav{display:block}
       .hero-inner{grid-template-columns: 1fr}
-      h1{font-size: 44px}
-      .kpi-grid{grid-template-columns: 1fr}
       .grid-3{grid-template-columns: 1fr}
-      .menu{grid-template-columns: 1fr}
+      .menu-list{grid-template-columns: 1fr}
       .gallery{grid-template-columns: 1fr 1fr}
-      .two-col{grid-template-columns: 1fr}
-      .actions{min-width:auto}
+      h1{font-size: 34px}
     }
   </style>
 </head>
@@ -365,7 +333,7 @@
           <div class="mark">CC</div>
           <div class="brand-title">
             <strong>Caffi Ceirw</strong>
-            <span>Country Park Café • Golden Grove (Gelli Aur)</span>
+            <span>Small family-run café • Country Park</span>
           </div>
         </a>
 
@@ -374,11 +342,9 @@
           <a href="#menu">Menu</a>
           <a href="#visit">Visit</a>
           <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
         </nav>
 
         <div class="actions">
-          <!-- Replace with confirmed contact details later -->
           <a class="btn" href="https://www.goldengrove.org.uk/caffi" target="_blank" rel="noreferrer">Official Page</a>
           <a class="btn primary" href="#visit">Plan a Visit</a>
         </div>
@@ -389,7 +355,6 @@
         <a href="#menu">Menu</a>
         <a href="#visit">Visit</a>
         <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
       </div>
     </div>
   </header>
@@ -399,60 +364,48 @@
     <div class="container">
       <div class="hero-inner">
         <div>
-          <div class="pill">Independent café • Deer Park views • Dog friendly</div>
-          <h1>
-            A calm pause<br>
-            in the parkland.
-          </h1>
+          <div class="pill">Coffee • cakes • light lunches • dog friendly</div>
+          <h1>Country-park café comfort</h1>
           <p>
-            Caffi Ceirw is a gorgeous, independent café at Golden Grove (Gelli Aur) Country Park — the perfect place
-            to relax with a coffee, sandwich, or slice of cake, with breathtaking views over the former deer park.
+            A small, welcoming café at Golden Grove (Gelli Aur) Country Park — ideal after a walk, with lovely views across
+            the parkland. (Test site: text/menu/hours can be finalised after client approval.)
           </p>
 
           <div class="hero-ctas">
-            <a class="btn primary" href="#menu">See Sample Menu</a>
+            <a class="btn primary" href="#menu">Sample Menu</a>
             <a class="btn" href="#visit">Visitor Info</a>
-            <a class="btn" href="https://www.facebook.com/" target="_blank" rel="noreferrer" title="Replace with the café Facebook link">
-              Facebook (link placeholder)
-            </a>
           </div>
 
-          <div class="kpi-grid" aria-label="Highlights">
-            <div class="kpi">
-              <strong>Deer Park views</strong>
-              <span>Unwind with open green vistas.</span>
+          <div class="mini-cards" aria-label="Highlights">
+            <div class="mini-card">
+              <strong>Deer park views</strong>
+              Calm scenery while you pause and refuel.
             </div>
-            <div class="kpi">
+            <div class="mini-card">
+              <strong>Family-run feel</strong>
+              Friendly, relaxed, and down to earth.
+            </div>
+            <div class="mini-card">
               <strong>Dogs welcome</strong>
-              <span>Bring Fido along, too.</span>
-            </div>
-            <div class="kpi">
-              <strong>Parkland setting</strong>
-              <span>Perfect after woodland walks.</span>
+              Bring your dog along after a stroll.
             </div>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Quick details">
-          <h3>Dewch i mewn!</h3>
-          <p>
-            This is a test website concept (no live ordering/bookings yet).
-            Use it to set style + structure for client approval.
-          </p>
+        <aside class="side" aria-label="Quick details">
+          <h3>Quick info</h3>
+          <p>This is a small “test” build — no online ordering or bookings yet.</p>
 
-          <a class="btn primary" href="#visit" style="width:100%; margin-bottom:10px;">Opening Times (Placeholder)</a>
-          <a class="btn" href="#contact" style="width:100%;">Contact / Directions</a>
+          <a class="btn primary" style="width:100%; margin-bottom:10px" href="#visit">Opening times (placeholder)</a>
+          <a class="btn" style="width:100%" href="https://www.google.com/maps/search/?api=1&query=Golden%20Grove%20Gelli%20Aur%20Country%20Park" target="_blank" rel="noreferrer">
+            Directions
+          </a>
 
           <div class="divider"></div>
 
-          <div class="mini">
-            <strong style="color:var(--moss)">Parking note</strong><br>
-            All vehicles must be removed from the premises by café closing time.
-          </div>
-
-          <div class="mini" style="margin-top:10px">
-            <strong style="color:var(--moss)">Where</strong><br>
-            Golden Grove (Gelli Aur) Country Park
+          <div class="small">
+            <strong style="color:var(--green)">Parking note</strong><br>
+            Please ensure vehicles are removed by café closing time.
           </div>
         </aside>
       </div>
@@ -465,25 +418,23 @@
       <div class="section-head">
         <div>
           <div class="pill">About</div>
-          <h2>Country-park café comfort</h2>
+          <h2>A simple, cosy stop</h2>
         </div>
-        <p>
-          Designed to feel natural, warm, and refined — like stepping in from a woodland walk to a cosy, light-filled space.
-        </p>
+        <p>Warm tones, deep green accents, and a clean layout—made for a small café in a big landscape.</p>
       </div>
 
       <div class="grid-3">
         <div class="card">
-          <h3>Relaxed & welcoming</h3>
-          <p>A simple, thoughtful café experience — ideal for families, walkers, and weekend visitors.</p>
+          <h3>Warm welcome</h3>
+          <p>Easygoing, friendly service with a family-run feel.</p>
         </div>
         <div class="card">
-          <h3>Views & fresh air</h3>
-          <p>Enjoy the scenery across the former deer park—especially with a warm drink in hand.</p>
+          <h3>Perfect after a walk</h3>
+          <p>A calm spot for coffee and cake after exploring the park.</p>
         </div>
         <div class="card">
           <h3>Dog friendly</h3>
-          <p>Dogs are welcome in Caffi Ceirw, so your best mate doesn’t miss out.</p>
+          <p>Dogs welcome—please keep them under control.</p>
         </div>
       </div>
     </div>
@@ -497,69 +448,45 @@
           <div class="pill">Menu</div>
           <h2>Sample menu (test)</h2>
         </div>
-        <p>
-          Placeholder items to show layout. Replace with the real menu and prices when the client provides them.
-        </p>
+        <p>Simple placeholders to show style and structure. Replace with the real menu + prices later.</p>
       </div>
 
-      <div class="grid-3">
-        <div class="card">
-          <h3>Hot drinks</h3>
-          <div class="menu">
-            <div class="menu-item">
-              <div class="row"><div class="name">Flat White</div><div class="price">—</div></div>
-              <div class="desc">Silky, balanced espresso</div>
-            </div>
-            <div class="menu-item">
-              <div class="row"><div class="name">Cappuccino</div><div class="price">—</div></div>
-              <div class="desc">Classic foam, rich crema</div>
-            </div>
-            <div class="menu-item">
-              <div class="row"><div class="name">Welsh Brew Tea</div><div class="price">—</div></div>
-              <div class="desc">Comfort in a pot</div>
-            </div>
+      <div class="menu-list">
+        <div class="card menu-block">
+          <h3 style="margin-bottom:8px; color:var(--green)">Drinks</h3>
+          <div class="item">
+            <div class="row"><div class="name">Americano</div><div class="price">—</div></div>
+            <div class="desc">Smooth, warming</div>
+          </div>
+          <div class="item">
+            <div class="row"><div class="name">Cappuccino</div><div class="price">—</div></div>
+            <div class="desc">Classic foam, rich espresso</div>
+          </div>
+          <div class="item">
+            <div class="row"><div class="name">Tea (pot)</div><div class="price">—</div></div>
+            <div class="desc">A proper brew</div>
           </div>
         </div>
 
-        <div class="card">
-          <h3>Lunch & light bites</h3>
-          <div class="menu">
-            <div class="menu-item">
-              <div class="row"><div class="name">Seasonal Soup</div><div class="price">—</div></div>
-              <div class="desc">With crusty bread & butter</div>
-            </div>
-            <div class="menu-item">
-              <div class="row"><div class="name">Sandwich of the Day</div><div class="price">—</div></div>
-              <div class="desc">Fresh, simple, satisfying</div>
-            </div>
-            <div class="menu-item">
-              <div class="row"><div class="name">Savoury Scone</div><div class="price">—</div></div>
-              <div class="desc">With butter & chutney</div>
-            </div>
+        <div class="card menu-block">
+          <h3 style="margin-bottom:8px; color:var(--green)">Food</h3>
+          <div class="item">
+            <div class="row"><div class="name">Soup of the day</div><div class="price">—</div></div>
+            <div class="desc">With crusty bread</div>
           </div>
-        </div>
-
-        <div class="card">
-          <h3>Cakes & sweet treats</h3>
-          <div class="menu">
-            <div class="menu-item">
-              <div class="row"><div class="name">Victoria Sponge</div><div class="price">—</div></div>
-              <div class="desc">A timeless classic</div>
-            </div>
-            <div class="menu-item">
-              <div class="row"><div class="name">Carrot Cake</div><div class="price">—</div></div>
-              <div class="desc">Spiced, soft, generous</div>
-            </div>
-            <div class="menu-item">
-              <div class="row"><div class="name">Bake of the Day</div><div class="price">—</div></div>
-              <div class="desc">Ask what’s fresh today</div>
-            </div>
+          <div class="item">
+            <div class="row"><div class="name">Sandwich of the day</div><div class="price">—</div></div>
+            <div class="desc">Fresh and simple</div>
+          </div>
+          <div class="item">
+            <div class="row"><div class="name">Cake slice</div><div class="price">—</div></div>
+            <div class="desc">Ask what’s available</div>
           </div>
         </div>
       </div>
 
-      <p class="note">
-        Allergens: include a short allergen note here once the café confirms details.
+      <p style="margin-top:10px; font-size:12.5px; color:rgba(20,20,20,.65);">
+        Allergens: please ask staff about allergens and dietary requirements.
       </p>
     </div>
   </section>
@@ -570,120 +497,58 @@
       <div class="section-head">
         <div>
           <div class="pill">Visit</div>
-          <h2>Plan your visit</h2>
+          <h2>Visitor info</h2>
         </div>
-        <p>
-          Add confirmed opening hours, parking guidance, and seasonal notes once the client approves the site.
-        </p>
+        <p>Add confirmed opening times and any seasonal notes once the café approves the content.</p>
       </div>
 
       <div class="grid-3">
         <div class="card">
-          <h3>Opening hours</h3>
-          <p>Placeholder (confirm with café).</p>
-          <ul>
-            <li>Mon–Fri: —</li>
-            <li>Sat: —</li>
-            <li>Sun: —</li>
-          </ul>
+          <h3>Opening times</h3>
+          <p>Placeholder (to confirm):</p>
+          <p style="margin-top:8px; color:rgba(20,20,20,.70); font-size:13.5px;">
+            Mon–Fri: —<br>Sat: —<br>Sun: —
+          </p>
         </div>
         <div class="card">
           <h3>Parking</h3>
-          <p>Please remember: vehicles must be removed from the premises by café closing time.</p>
-          <ul>
-            <li>Follow on-site signage</li>
-            <li>Keep access routes clear</li>
-            <li>Ask staff if unsure</li>
-          </ul>
+          <p>Please ensure vehicles are removed from the premises by café closing time.</p>
         </div>
         <div class="card">
-          <h3>Dogs welcome</h3>
-          <p>Bring your dog along—perfect after a stroll.</p>
-          <ul>
-            <li>Keep dogs under control</li>
-            <li>Water bowls (if available)</li>
-            <li>Be mindful of other guests</li>
-          </ul>
+          <h3>Directions</h3>
+          <p>Open Golden Grove (Gelli Aur) Country Park in Google Maps.</p>
+          <p style="margin-top:12px;">
+            <a class="btn primary" target="_blank" rel="noreferrer"
+               href="https://www.google.com/maps/search/?api=1&query=Golden%20Grove%20Gelli%20Aur%20Country%20Park">
+              Open Maps
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" style="background: rgba(255,255,255,.25); border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);">
+  <section id="gallery" style="background: rgba(255,255,255,.25); border-top:1px solid var(--stone);">
     <div class="container">
       <div class="section-head">
         <div>
           <div class="pill">Gallery</div>
-          <h2>Parkland moments</h2>
+          <h2>A few snapshots</h2>
         </div>
-        <p>Placeholders for approved photos (terrace, cakes, coffee, views across the deer park, café interior).</p>
+        <p>Placeholders for real photos: café, coffee, cakes, and parkland views.</p>
       </div>
 
       <div class="gallery" aria-label="Photo placeholders">
-        <div class="ph"><span>Photo 1</span></div>
-        <div class="ph"><span>Photo 2</span></div>
-        <div class="ph"><span>Photo 3</span></div>
-        <div class="ph"><span>Photo 4</span></div>
-        <div class="ph"><span>Photo 5</span></div>
-        <div class="ph"><span>Photo 6</span></div>
+        <div class="ph">Photo 1</div>
+        <div class="ph">Photo 2</div>
+        <div class="ph">Photo 3</div>
+        <div class="ph">Photo 4</div>
       </div>
 
-      <p class="note">
-        Tip: once the client supplies licensed images, we can swap these placeholders for real photos and add subtle parallax.
+      <p style="margin-top:10px; font-size:12.5px; color:rgba(20,20,20,.65);">
+        Next step: swap placeholders for client-approved images + add a small Instagram/Facebook strip if they want it.
       </p>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <div class="pill">Contact</div>
-          <h2>Find & follow</h2>
-        </div>
-        <p>
-          Use the official Golden Grove café page for now, and replace placeholders with confirmed café contact details.
-        </p>
-      </div>
-
-      <div class="two-col">
-        <div class="card">
-          <h3>Official page</h3>
-          <p>
-            <strong style="color:var(--moss)">Caffi Ceirw</strong><br>
-            Golden Grove (Gelli Aur) Country Park
-          </p>
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="https://www.goldengrove.org.uk/caffi" target="_blank" rel="noreferrer">Open Café Page</a>
-            <a class="btn" href="#top">Back to top</a>
-          </div>
-          <p class="note">
-            Replace “Facebook link placeholder” above with the café’s real Facebook URL when you have it.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Directions</h3>
-          <p>Use Golden Grove (Gelli Aur) Country Park in your preferred map app.</p>
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" target="_blank" rel="noreferrer"
-               href="https://www.google.com/maps/search/?api=1&query=Golden%20Grove%20Gelli%20Aur%20Country%20Park">
-              Open in Google Maps
-            </a>
-            <a class="btn" target="_blank" rel="noreferrer"
-               href="https://www.apple.com/maps/">
-              Apple Maps (manual search)
-            </a>
-          </div>
-          <div class="divider"></div>
-          <p class="mini">
-            <strong style="color:var(--moss)">Note</strong><br>
-            This is a test build—next step is swapping placeholder hours/menu/contact for confirmed details.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -691,14 +556,12 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div>© <span id="y"></span> Caffi Ceirw. Test website concept.</div>
-        <div style="opacity:.92;">Elegant country-park aesthetic • moss, oak & warm gold</div>
+        <div>© <span id="y"></span> Caffi Ceirw — test concept site</div>
+        <div style="opacity:.92;">Deep green + off-white + warm wood tones</div>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 </body>
 </html>
