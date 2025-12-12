@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Caffi Ceirw — Golden Grove (Gelli Aur)</title>
-  <meta name="description" content="Caffi Ceirw — a small family-run café at Golden Grove (Gelli Aur) Country Park." />
+  <meta name="description" content="Caffi Ceirw — small family-run café at Golden Grove (Gelli Aur) Country Park. Menu, reservations and functions." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,19 +12,22 @@
 
   <style>
     :root{
+      /* Keep the natural palette */
       --green:#0f2b1f;
       --green2:#184634;
       --brown:#5a3e25;
       --brown2:#3f2a18;
+
       --paper:#f4efe6;
       --card:#fffdf8;
       --ink:#141414;
       --muted: rgba(20,20,20,.72);
       --stroke: rgba(15,43,31,.16);
+
       --radius: 18px;
       --shadow: 0 18px 50px rgba(0,0,0,.16);
       --shadowSoft: 0 10px 26px rgba(0,0,0,.10);
-      --max: 980px;
+      --max: 1040px;
     }
 
     *{box-sizing:border-box}
@@ -38,6 +41,10 @@
     }
     a{color:inherit; text-decoration:none}
     .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto;}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
 
     /* Header */
     header{
@@ -56,28 +63,18 @@
       padding: 12px 0;
     }
 
-    .brand{
+    /* Top-right cluster: buttons + logo */
+    .topright{
       display:flex;
       align-items:center;
       gap: 12px;
-      color:#fff;
-      min-width: 220px;
+      margin-left:auto;
     }
-    .brand img{
-      height: 56px;
-      width: auto;
-      display:block;
-      border-radius: 12px;
-      background: rgba(255,255,255,.08);
-      padding: 8px;
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 8px 18px rgba(0,0,0,.18);
-    }
-
-    .actions{
+    .toplinks{
       display:flex;
-      gap: 10px;
       align-items:center;
+      gap: 10px;
+      flex-wrap:wrap;
       justify-content:flex-end;
     }
     .btn{
@@ -87,7 +84,7 @@
       padding: 10px 12px;
       border-radius: 14px;
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 800;
       border: 1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.10);
       color:#fff;
@@ -100,42 +97,61 @@
       background: linear-gradient(135deg, rgba(90,62,37,.95), rgba(63,42,24,.95));
     }
 
-    /* Hero */
-    .hero{
-      position: relative;
-      min-height: 70vh;
+    /* Bigger logo, top-right */
+    .logo{
       display:flex;
-      align-items:flex-end;
-      border-bottom: 1px solid rgba(15,43,31,.14);
-      background-color: #ddd; /* fallback */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      align-items:center;
+      gap:10px;
+      color:#fff;
     }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      /* overlay tuned for watercolor background */
+    .logo img{
+      height: 78px;   /* bigger */
+      width: auto;
+      display:block;
+      border-radius: 14px;
+      background: rgba(255,255,255,.08);
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+
+    /* Small left title (keeps balance while logo sits right) */
+    .leftbrand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      color:#fff;
+      min-width: 240px;
+    }
+    .leftbrand strong{
+      font-family: Fraunces, Georgia, serif;
+      font-size: 16px;
+      letter-spacing:-.01em;
+    }
+    .leftbrand span{
+      font-size: 12.5px;
+      color: rgba(255,255,255,.72);
+    }
+
+    /* HERO with single full image (not cropped) */
+    .hero{
+      border-bottom: 1px solid rgba(15,43,31,.14);
       background:
-        linear-gradient(180deg,
-          rgba(15,43,31,.12) 0%,
-          rgba(15,43,31,.68) 70%,
-          rgba(15,43,31,.92) 100%
-        );
+        radial-gradient(1100px at 15% 0%, rgba(24,70,52,.22), transparent 60%),
+        radial-gradient(1100px at 85% 35%, rgba(90,62,37,.20), transparent 60%);
     }
     .hero-inner{
-      position: relative;
-      width: 100%;
-      padding: 36px 0;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 28px 0 34px;
     }
 
     .hero-card{
-      max-width: 720px;
       border-radius: var(--radius);
-      background: rgba(255,253,248,.90);
+      background: rgba(255,253,248,.88);
       border: 1px solid rgba(90,62,37,.28);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadowSoft);
       padding: 18px;
     }
     .pill{
@@ -163,7 +179,7 @@
       margin: 0;
       color: var(--muted);
       font-size: 14.5px;
-      max-width: 62ch;
+      max-width: 68ch;
     }
     .hero-ctas{
       margin-top: 14px;
@@ -179,9 +195,9 @@
       padding: 10px 12px;
       border-radius: 14px;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 850;
       border: 1px solid rgba(15,43,31,.22);
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.82);
       color: var(--green);
       transition:160ms ease;
     }
@@ -191,6 +207,28 @@
       border-color: rgba(15,43,31,.35);
     }
     .btn2:hover{transform: translateY(-1px);}
+
+    /* Single featured image, fully visible */
+    .hero-image{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(90,62,37,.30);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .hero-image img{
+      width: 100%;
+      height: auto;          /* show full image */
+      display:block;
+      object-fit: contain;   /* no cropping */
+      background: rgba(255,253,248,.9);
+    }
+    .hero-image .cap{
+      padding: 10px 12px;
+      background: linear-gradient(135deg, rgba(90,62,37,.95), rgba(63,42,24,.95));
+      color: rgba(255,255,255,.88);
+      font-size: 12.5px;
+    }
 
     /* Sections */
     section{padding: 34px 0;}
@@ -212,7 +250,7 @@
       margin:0;
       color: var(--muted);
       font-size: 13.5px;
-      max-width: 70ch;
+      max-width: 78ch;
     }
 
     .grid{
@@ -235,36 +273,18 @@
       color: var(--brown);
     }
     .card p{margin:0; color: rgba(20,20,20,.72); font-size: 13.5px;}
-
-    /* Featured interior image block */
-    .feature{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 14px;
-      align-items: stretch;
-      margin-top: 14px;
-    }
-    .frame{
-      border-radius: var(--radius);
-      overflow:hidden;
-      border: 1px solid rgba(90,62,37,.30);
-      background: var(--card);
-      box-shadow: var(--shadowSoft);
-    }
-    .frame img{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit: cover;
-    }
-    .frame-cap{
-      padding: 10px 12px;
-      background: linear-gradient(135deg, rgba(90,62,37,.95), rgba(63,42,24,.95));
-      color: rgba(255,255,255,.88);
-      font-size: 12.5px;
+    .tagrow{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;}
+    .tag{
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--green);
+      background: rgba(15,43,31,.08);
+      border: 1px solid rgba(15,43,31,.16);
+      padding: 6px 10px;
+      border-radius: 999px;
     }
 
-    /* Wood strip menu */
+    /* Menu (wood strip) */
     .wood-strip{
       border-top: 1px solid rgba(90,62,37,.35);
       border-bottom: 1px solid rgba(90,62,37,.35);
@@ -285,7 +305,7 @@
       background: rgba(0,0,0,.18);
       border: 1px solid rgba(255,255,255,.18);
       padding: 14px;
-      max-width: 760px;
+      max-width: 820px;
     }
     .menu-item{
       padding: 10px 0;
@@ -293,6 +313,39 @@
       font-size: 14px;
     }
     .menu-item:last-child{border-bottom:none}
+    .menu-note{
+      margin-top:10px;
+      font-size:12.5px;
+      color: rgba(255,255,255,.82);
+    }
+
+    /* Reservations + Functions */
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .panel{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--stroke);
+      padding: 14px;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+    }
+    .panel h3{
+      margin:0 0 8px;
+      font-family: Fraunces, Georgia, serif;
+      color: var(--green);
+      font-size: 18px;
+    }
+    .panel ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: rgba(20,20,20,.72);
+      font-size: 13.5px;
+    }
+    .panel li{margin: 6px 0;}
 
     footer{
       background: rgba(15,43,31,.95);
@@ -303,12 +356,13 @@
     }
 
     /* Mobile */
-    @media (max-width: 900px){
+    @media (max-width: 980px){
+      .leftbrand{min-width:auto}
+      .logo img{height: 70px;}
       .grid{grid-template-columns: 1fr;}
-      .feature{grid-template-columns: 1fr;}
-      .hero{min-height: 62vh;}
+      .split{grid-template-columns: 1fr;}
       h1{font-size: 32px;}
-      .brand img{height: 50px;}
+      .toplinks{display:none;} /* keep header clean on small screens */
     }
   </style>
 </head>
@@ -316,73 +370,88 @@
 <body>
   <header>
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Caffi Ceirw home">
-        <!-- LOGO (auto-fallback if moved) -->
-        <img id="logoImg" src="assets/ceirwlogowm.jpg" alt="Caffi Ceirw logo">
-      </a>
+      <div class="leftbrand">
+        <strong>Caffi Ceirw</strong>
+        <span>Golden Grove (Gelli Aur) • Country Park Café</span>
+      </div>
 
-      <div class="actions">
-        <a class="btn" href="https://www.goldengrove.org.uk/caffi" target="_blank" rel="noreferrer">Official Page</a>
-        <a class="btn primary" href="#menu">Menu (test)</a>
+      <div class="topright">
+        <nav class="toplinks" aria-label="Top navigation">
+          <a class="btn" href="#menu">Menu</a>
+          <a class="btn primary" href="#reservations">Reservations</a>
+          <a class="btn" href="#functions">Functions</a>
+        </nav>
+
+        <a class="logo" href="#top" aria-label="Caffi Ceirw home">
+          <!-- Images in repo ROOT -->
+          <img src="./ceirwlogowm.jpg" alt="Caffi Ceirw logo">
+          <span class="sr-only">Caffi Ceirw</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- HERO (BACKGROUND = watercolor interior) -->
-  <main id="top" class="hero" aria-label="Caffi Ceirw hero">
+  <main id="top" class="hero">
     <div class="container hero-inner">
       <div class="hero-card">
-        <div class="pill">Family-run • Country Park • Dog friendly</div>
-        <h1>Caffi Ceirw</h1>
+        <div class="pill">Family-run • Outdoorsy • Warm welcome</div>
+        <h1>A cosy stop in the countryside</h1>
         <p>
-          A small, welcoming café at Golden Grove (Gelli Aur) Country Park —
-          a warm place to pause after a walk, surrounded by nature.
+          Caffi Ceirw is a small, family-run café at Golden Grove (Gelli Aur) Country Park —
+          perfect for coffee, cake and light lunches after a walk, with a relaxed space for community events too.
         </p>
+
         <div class="hero-ctas">
-          <a class="btn2 primary" href="#menu">See sample menu</a>
-          <a class="btn2" href="#visit">Visitor info</a>
+          <a class="btn2 primary" href="#menu">View sample menu</a>
+          <a class="btn2" href="#functions">Events & functions</a>
+          <a class="btn2" href="https://www.goldengrove.org.uk/caffi" target="_blank" rel="noreferrer">Official page</a>
         </div>
       </div>
+
+      <!-- SINGLE USE of watercolor interior image; fully visible -->
+      <figure class="hero-image" aria-label="Caffi Ceirw interior watercolour illustration">
+        <img src="./ceirwintwatercol.jpg" alt="Watercolour illustration of the café interior">
+        <figcaption class="cap">Watercolour illustration of the café conservatory — warm wood tones and natural light.</figcaption>
+      </figure>
     </div>
   </main>
 
   <section id="about">
     <div class="container">
       <div class="section-head">
-        <h2>About</h2>
-        <p>Natural greens and warm woods — simple, cosy, and rooted in the outdoors.</p>
+        <h2>What to expect</h2>
+        <p>Natural greens, warm wood and a calm pace — built around the outdoors and a friendly, local feel.</p>
       </div>
 
       <div class="grid">
         <div class="card">
-          <h3>Family-run</h3>
-          <p>Friendly, personal service — a relaxed place to linger.</p>
+          <h3>Family-run café</h3>
+          <p>Simple, welcoming service — the kind of place you’ll return to after a good walk.</p>
+          <div class="tagrow">
+            <span class="tag">Friendly</span>
+            <span class="tag">Local</span>
+            <span class="tag">Relaxed</span>
+          </div>
         </div>
-        <div class="card">
-          <h3>Perfect after a walk</h3>
-          <p>Coffee, cake, and light lunches after exploring the parkland.</p>
-        </div>
-        <div class="card">
-          <h3>Dogs welcome</h3>
-          <p>Well-behaved dogs are welcome — please keep them close around other guests.</p>
-        </div>
-      </div>
 
-      <!-- Interior image shown on landing page (in addition to hero background) -->
-      <div class="feature">
-        <div class="frame">
-          <img id="interiorImg" src="assets/ceirwintwatercol.jpg" alt="Caffi Ceirw interior watercolor illustration">
-          <div class="frame-cap">A warm, light-filled space — inspired by the café’s conservatory.</div>
-        </div>
         <div class="card">
-          <h3>Test site note</h3>
-          <p>
-            This is a concept build. Next step is swapping placeholder copy with approved wording, adding opening times,
-            and final menu details.
-          </p>
-          <p style="margin-top:10px; font-size:13.5px; color: rgba(20,20,20,.72);">
-            Tip: keep the images the same names so your links never break.
-          </p>
+          <h3>Great for groups</h3>
+          <p>Plenty of space for meet-ups, community gatherings, and relaxed celebrations.</p>
+          <div class="tagrow">
+            <span class="tag">Meetings</span>
+            <span class="tag">Clubs</span>
+            <span class="tag">Families</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Community events</h3>
+          <p>From themed food nights to fairs and music — the café can host a variety of events.</p>
+          <div class="tagrow">
+            <span class="tag">Food nights</span>
+            <span class="tag">Music</span>
+            <span class="tag">Fairs</span>
+          </div>
         </div>
       </div>
     </div>
@@ -403,36 +472,74 @@
         <div class="menu-item">Homemade cakes</div>
       </div>
 
-      <div style="margin-top:10px; font-size:12.5px; color: rgba(255,255,255,.80);">
-        Allergens: please ask staff about allergens and dietary requirements.
+      <div class="menu-note">Allergens: please ask staff about allergens and dietary requirements.</div>
+    </div>
+  </section>
+
+  <section id="reservations">
+    <div class="container">
+      <div class="section-head">
+        <h2>Reservations</h2>
+        <p>Test page — no booking system yet. This section is ready for your preferred method (phone, email, form, etc.).</p>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Reserve a table</h3>
+          <p style="margin:0; color:rgba(20,20,20,.72); font-size:13.5px;">
+            Add your preferred reservation method here (phone/email/form). For now, link customers to the official page.
+          </p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn2 primary" href="https://www.goldengrove.org.uk/caffi" target="_blank" rel="noreferrer">Contact via official page</a>
+            <a class="btn2" href="#functions">Ask about functions</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Group visits</h3>
+          <p style="margin:0; color:rgba(20,20,20,.72); font-size:13.5px;">
+            Ideal for walking groups, clubs, or family meet-ups. We can add group options once confirmed.
+          </p>
+          <ul>
+            <li>Advance notice recommended for larger groups</li>
+            <li>Flexible seating</li>
+            <li>Seasonal planning (indoors/outdoors)</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="visit">
+  <section id="functions">
     <div class="container">
       <div class="section-head">
-        <h2>Visit</h2>
-        <p>Add confirmed opening times and seasonal notes once you’re ready.</p>
+        <h2>Functions & events</h2>
+        <p>They’ve hosted community and family events — here are the types of functions this site is structured for.</p>
       </div>
 
       <div class="grid">
         <div class="card">
-          <h3>Opening times</h3>
-          <p>Placeholder — add hours here once confirmed.</p>
+          <h3>Wakes & family gatherings</h3>
+          <p>A calm, respectful space for family occasions, with flexible seating and catering options (to confirm).</p>
         </div>
         <div class="card">
-          <h3>Parking</h3>
-          <p>Please ensure vehicles are removed from the premises by café closing time.</p>
+          <h3>African food nights</h3>
+          <p>Themed evenings and special menus — great for community nights and seasonal events.</p>
         </div>
         <div class="card">
-          <h3>Directions</h3>
-          <p>
-            <a class="btn2 primary" target="_blank" rel="noreferrer"
-              href="https://www.google.com/maps/search/?api=1&query=Golden%20Grove%20Gelli%20Aur%20Country%20Park">
-              Open Maps
-            </a>
-          </p>
+          <h3>Music & fairs</h3>
+          <p>Small performances, local fairs, pop-ups, and community meet-ups.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:12px;">
+        <h3>Enquiries (test)</h3>
+        <p style="margin:0; color:rgba(20,20,20,.72); font-size:13.5px;">
+          Add a simple enquiry form here later. For now, link to the official page for contact details.
+        </p>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn2 primary" href="https://www.goldengrove.org.uk/caffi" target="_blank" rel="noreferrer">Enquire via official page</a>
+          <a class="btn2" href="#menu">Back to menu</a>
         </div>
       </div>
     </div>
@@ -440,37 +547,12 @@
 
   <footer>
     <div class="container">
-      © <span id="y"></span> Caffi Ceirw — test website concept
+      © <span id="y"></span> Caffi Ceirw — test website concept • Forest greens & warm wood tones
     </div>
   </footer>
 
   <script>
-    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // Fallback logic:
-    // If you keep images in repo root (not /assets), this will still work automatically.
-    const logo = document.getElementById("logoImg");
-    const interior = document.getElementById("interiorImg");
-    const hero = document.querySelector(".hero");
-
-    const LOGO_ASSETS = "assets/ceirwlogowm.jpg";
-    const LOGO_ROOT   = "./ceirwlogowm.jpg";
-
-    const INT_ASSETS  = "assets/ceirwintwatercol.jpg";
-    const INT_ROOT    = "./ceirwintwatercol.jpg";
-
-    // Set hero background (try assets first)
-    hero.style.backgroundImage = `url("${INT_ASSETS}")`;
-
-    // If logo fails, fall back to root
-    logo.onerror = () => { logo.src = LOGO_ROOT; };
-
-    // If interior fails, fall back to root AND set hero bg to root
-    interior.onerror = () => {
-      interior.src = INT_ROOT;
-      hero.style.backgroundImage = `url("${INT_ROOT}")`;
-    };
   </script>
 </body>
 </html>
