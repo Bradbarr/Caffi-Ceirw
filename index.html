@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Caffi Ceirw — Golden Grove (Gelli Aur)</title>
-  <meta name="description" content="Caffi Ceirw — small family-run café at Golden Grove (Gelli Aur) Country Park." />
+  <meta name="description" content="Caffi Ceirw — a small family-run café at Golden Grove (Gelli Aur) Country Park." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +13,18 @@
   <style>
     :root{
       --green:#0f2b1f;
-      --green2:#174534;
+      --green2:#184634;
       --brown:#5a3e25;
-      --paper:#f6f1e8;
+      --brown2:#3f2a18;
+      --paper:#f4efe6;
+      --card:#fffdf8;
       --ink:#141414;
-      --muted: rgba(20,20,20,.74);
-      --radius: 16px;
+      --muted: rgba(20,20,20,.72);
+      --stroke: rgba(15,43,31,.16);
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(0,0,0,.16);
+      --shadowSoft: 0 10px 26px rgba(0,0,0,.10);
       --max: 980px;
-      --shadow: 0 18px 48px rgba(0,0,0,.18);
     }
 
     *{box-sizing:border-box}
@@ -39,7 +43,7 @@
     header{
       position: sticky;
       top: 0;
-      z-index: 30;
+      z-index: 50;
       background: rgba(15,43,31,.92);
       backdrop-filter: blur(10px);
       border-bottom: 2px solid rgba(90,62,37,.55);
@@ -51,33 +55,31 @@
       gap: 14px;
       padding: 12px 0;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap: 12px;
-      min-width: 220px;
       color:#fff;
+      min-width: 220px;
     }
     .brand img{
-      height: 52px;
+      height: 56px;
       width: auto;
       display:block;
-      border-radius: 10px;
-      background: rgba(255,255,255,.08);
-      padding: 6px;
-      border: 1px solid rgba(255,255,255,.14);
-    }
-    nav{display:flex; gap: 14px; flex-wrap:wrap; justify-content:center;}
-    nav a{
-      font-size: 13px;
-      font-weight: 650;
-      color: rgba(255,255,255,.90);
-      padding: 7px 9px;
       border-radius: 12px;
-      transition: 160ms ease;
+      background: rgba(255,255,255,.08);
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
     }
-    nav a:hover{background: rgba(90,62,37,.45);}
-    .actions{display:flex; gap: 10px; align-items:center;}
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:flex-end;
+    }
     .btn{
       display:inline-flex;
       align-items:center;
@@ -98,15 +100,14 @@
       background: linear-gradient(135deg, rgba(90,62,37,.95), rgba(63,42,24,.95));
     }
 
-    /* Hero with your watercolor interior as background */
+    /* Hero */
     .hero{
       position: relative;
-      min-height: 64vh;
+      min-height: 70vh;
       display:flex;
       align-items:flex-end;
-      border-bottom: 2px solid rgba(90,62,37,.30);
-
-      background-image: url("assets/ceirwintwatercol.jpg");
+      border-bottom: 1px solid rgba(15,43,31,.14);
+      background-color: #ddd; /* fallback */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -115,40 +116,45 @@
       content:"";
       position:absolute;
       inset:0;
-      /* soft overlay to make text readable */
+      /* overlay tuned for watercolor background */
       background:
-        linear-gradient(180deg, rgba(15,43,31,.20) 0%, rgba(15,43,31,.78) 72%, rgba(15,43,31,.92) 100%);
+        linear-gradient(180deg,
+          rgba(15,43,31,.12) 0%,
+          rgba(15,43,31,.68) 70%,
+          rgba(15,43,31,.92) 100%
+        );
     }
     .hero-inner{
       position: relative;
       width: 100%;
-      padding: 34px 0 34px;
+      padding: 36px 0;
     }
 
     .hero-card{
-      max-width: 660px;
+      max-width: 720px;
       border-radius: var(--radius);
-      background: rgba(246,241,232,.88);
-      border: 1px solid rgba(90,62,37,.35);
+      background: rgba(255,253,248,.90);
+      border: 1px solid rgba(90,62,37,.28);
       box-shadow: var(--shadow);
-      padding: 18px 18px;
+      padding: 18px;
     }
     .pill{
       display:inline-flex;
-      gap:8px;
       align-items:center;
+      gap: 8px;
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(15,43,31,.10);
       border: 1px solid rgba(15,43,31,.18);
       color: var(--green);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 850;
+      letter-spacing:.01em;
     }
     h1{
       margin: 10px 0 8px;
       font-family: Fraunces, Georgia, serif;
-      font-size: 34px;
+      font-size: 36px;
       line-height: 1.08;
       color: var(--green);
       letter-spacing:-.02em;
@@ -156,14 +162,15 @@
     .hero-card p{
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
-      max-width: 60ch;
+      font-size: 14.5px;
+      max-width: 62ch;
     }
     .hero-ctas{
       margin-top: 14px;
       display:flex;
       gap: 10px;
       flex-wrap:wrap;
+      align-items:center;
     }
     .btn2{
       display:inline-flex;
@@ -172,7 +179,7 @@
       padding: 10px 12px;
       border-radius: 14px;
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 800;
       border: 1px solid rgba(15,43,31,.22);
       background: rgba(255,255,255,.78);
       color: var(--green);
@@ -193,7 +200,7 @@
       justify-content:space-between;
       gap: 14px;
       flex-wrap:wrap;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .section-head h2{
       margin:0;
@@ -217,8 +224,9 @@
     .card{
       border-radius: var(--radius);
       background: rgba(255,255,255,.70);
-      border: 1px solid rgba(15,43,31,.14);
+      border: 1px solid var(--stroke);
       padding: 14px;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
     }
     .card h3{
       margin: 0 0 6px;
@@ -228,8 +236,36 @@
     }
     .card p{margin:0; color: rgba(20,20,20,.72); font-size: 13.5px;}
 
-    /* Wood-ish menu strip */
-    .menu-strip{
+    /* Featured interior image block */
+    .feature{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+    .frame{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(90,62,37,.30);
+      background: var(--card);
+      box-shadow: var(--shadowSoft);
+    }
+    .frame img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit: cover;
+    }
+    .frame-cap{
+      padding: 10px 12px;
+      background: linear-gradient(135deg, rgba(90,62,37,.95), rgba(63,42,24,.95));
+      color: rgba(255,255,255,.88);
+      font-size: 12.5px;
+    }
+
+    /* Wood strip menu */
+    .wood-strip{
       border-top: 1px solid rgba(90,62,37,.35);
       border-bottom: 1px solid rgba(90,62,37,.35);
       background:
@@ -249,7 +285,7 @@
       background: rgba(0,0,0,.18);
       border: 1px solid rgba(255,255,255,.18);
       padding: 14px;
-      max-width: 720px;
+      max-width: 760px;
     }
     .menu-item{
       padding: 10px 0;
@@ -268,11 +304,11 @@
 
     /* Mobile */
     @media (max-width: 900px){
-      nav{display:none}
-      .grid{grid-template-columns: 1fr}
-      .hero{min-height: 58vh}
-      h1{font-size: 30px}
-      .brand img{height: 46px}
+      .grid{grid-template-columns: 1fr;}
+      .feature{grid-template-columns: 1fr;}
+      .hero{min-height: 62vh;}
+      h1{font-size: 32px;}
+      .brand img{height: 50px;}
     }
   </style>
 </head>
@@ -281,19 +317,13 @@
   <header>
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Caffi Ceirw home">
-        <!-- LOGO -->
-        <img src="assets/ceirwlogowm.jpg" alt="Caffi Ceirw logo">
+        <!-- LOGO (auto-fallback if moved) -->
+        <img id="logoImg" src="assets/ceirwlogowm.jpg" alt="Caffi Ceirw logo">
       </a>
-
-      <nav aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#visit">Visit</a>
-      </nav>
 
       <div class="actions">
         <a class="btn" href="https://www.goldengrove.org.uk/caffi" target="_blank" rel="noreferrer">Official Page</a>
-        <a class="btn primary" href="#visit">Plan a Visit</a>
+        <a class="btn primary" href="#menu">Menu (test)</a>
       </div>
     </div>
   </header>
@@ -309,8 +339,8 @@
           a warm place to pause after a walk, surrounded by nature.
         </p>
         <div class="hero-ctas">
-          <a class="btn2 primary" href="#menu">Sample Menu</a>
-          <a class="btn2" href="#visit">Visitor Info</a>
+          <a class="btn2 primary" href="#menu">See sample menu</a>
+          <a class="btn2" href="#visit">Visitor info</a>
         </div>
       </div>
     </div>
@@ -320,13 +350,13 @@
     <div class="container">
       <div class="section-head">
         <h2>About</h2>
-        <p>Simple, cosy, and rooted in the outdoors — greens, wood, and a relaxed pace.</p>
+        <p>Natural greens and warm woods — simple, cosy, and rooted in the outdoors.</p>
       </div>
 
       <div class="grid">
         <div class="card">
           <h3>Family-run</h3>
-          <p>Friendly, personal service — the kind of place you’ll want to come back to.</p>
+          <p>Friendly, personal service — a relaxed place to linger.</p>
         </div>
         <div class="card">
           <h3>Perfect after a walk</h3>
@@ -334,17 +364,35 @@
         </div>
         <div class="card">
           <h3>Dogs welcome</h3>
-          <p>Well-behaved dogs are welcome — just keep them close around other guests.</p>
+          <p>Well-behaved dogs are welcome — please keep them close around other guests.</p>
+        </div>
+      </div>
+
+      <!-- Interior image shown on landing page (in addition to hero background) -->
+      <div class="feature">
+        <div class="frame">
+          <img id="interiorImg" src="assets/ceirwintwatercol.jpg" alt="Caffi Ceirw interior watercolor illustration">
+          <div class="frame-cap">A warm, light-filled space — inspired by the café’s conservatory.</div>
+        </div>
+        <div class="card">
+          <h3>Test site note</h3>
+          <p>
+            This is a concept build. Next step is swapping placeholder copy with approved wording, adding opening times,
+            and final menu details.
+          </p>
+          <p style="margin-top:10px; font-size:13.5px; color: rgba(20,20,20,.72);">
+            Tip: keep the images the same names so your links never break.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="menu" class="menu-strip">
+  <section id="menu" class="wood-strip">
     <div class="container" style="padding: 34px 0;">
       <div class="section-head">
         <h2 style="color:#fff;">Menu (test layout)</h2>
-        <p style="color:rgba(255,255,255,.82);">Placeholder items for now — swap with the real menu later.</p>
+        <p style="color:rgba(255,255,255,.82);">Placeholder items for now — replace with the real menu later.</p>
       </div>
 
       <div class="menu-box">
@@ -354,6 +402,10 @@
         <div class="menu-item">Sandwiches & light lunches</div>
         <div class="menu-item">Homemade cakes</div>
       </div>
+
+      <div style="margin-top:10px; font-size:12.5px; color: rgba(255,255,255,.80);">
+        Allergens: please ask staff about allergens and dietary requirements.
+      </div>
     </div>
   </section>
 
@@ -361,7 +413,7 @@
     <div class="container">
       <div class="section-head">
         <h2>Visit</h2>
-        <p>Add confirmed opening times and any seasonal notes once the client approves the content.</p>
+        <p>Add confirmed opening times and seasonal notes once you’re ready.</p>
       </div>
 
       <div class="grid">
@@ -393,7 +445,32 @@
   </footer>
 
   <script>
+    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Fallback logic:
+    // If you keep images in repo root (not /assets), this will still work automatically.
+    const logo = document.getElementById("logoImg");
+    const interior = document.getElementById("interiorImg");
+    const hero = document.querySelector(".hero");
+
+    const LOGO_ASSETS = "assets/ceirwlogowm.jpg";
+    const LOGO_ROOT   = "./ceirwlogowm.jpg";
+
+    const INT_ASSETS  = "assets/ceirwintwatercol.jpg";
+    const INT_ROOT    = "./ceirwintwatercol.jpg";
+
+    // Set hero background (try assets first)
+    hero.style.backgroundImage = `url("${INT_ASSETS}")`;
+
+    // If logo fails, fall back to root
+    logo.onerror = () => { logo.src = LOGO_ROOT; };
+
+    // If interior fails, fall back to root AND set hero bg to root
+    interior.onerror = () => {
+      interior.src = INT_ROOT;
+      hero.style.backgroundImage = `url("${INT_ROOT}")`;
+    };
   </script>
 </body>
 </html>
