@@ -28,9 +28,9 @@
       --shadowSoft: 0 10px 26px rgba(0,0,0,.10);
       --max: 1120px;
 
-      /* Increase this to show MORE of the watercolor vertically */
-      --bgZoom: contain;      /* KEY: show whole image */
-      --bgPos: top center;    /* KEY: keep roof visible */
+      /* Background rules (show full interior incl. roof) */
+      --bgZoom: contain;
+      --bgPos: top center;
     }
 
     *{box-sizing:border-box}
@@ -49,7 +49,7 @@
       clip:rect(0,0,0,0); white-space:nowrap; border:0;
     }
 
-    /* ===== Full-page watercolor background (SHOW FULL IMAGE) ===== */
+    /* ===== Full-page watercolor background (FULL image visible) ===== */
     body::before{
       content:"";
       position: fixed;
@@ -57,12 +57,11 @@
       z-index: -2;
 
       background-image: url("./ceirwintwatercol.jpg");
-      background-size: var(--bgZoom);   /* contain shows full image */
-      background-position: var(--bgPos);/* roof kept visible */
+      background-size: var(--bgZoom);
+      background-position: var(--bgPos);
       background-repeat: no-repeat;
-      background-color: var(--paper);   /* fills empty areas when using contain */
+      background-color: var(--paper);
 
-      /* Gentle tune */
       filter: saturate(0.98) contrast(1.02) brightness(1.02);
     }
     body::after{
@@ -70,7 +69,6 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      /* Wash overlay for readability without hiding roof detail */
       background:
         radial-gradient(1200px circle at 20% 0%, rgba(24,70,52,.10), transparent 60%),
         radial-gradient(1200px circle at 80% 40%, rgba(90,62,37,.10), transparent 60%),
@@ -150,9 +148,9 @@
       background: linear-gradient(135deg, rgba(90,62,37,.95), rgba(63,42,24,.95));
     }
 
-    /* BIGGER logo top-right (more readable) */
+    /* BIG logo top-right */
     .logo img{
-      height: 140px; /* bigger again */
+      height: 140px;
       width:auto;
       display:block;
       border-radius: 18px;
@@ -285,6 +283,47 @@
     }
     .card p{margin:0; color: rgba(20,20,20,.72); font-size: 13.5px;}
 
+    /* Subtle photo tiles */
+    .photo-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .photo{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(15,43,31,.16);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadowSoft);
+    }
+    .photo img{
+      width:100%;
+      height: 190px;
+      object-fit: cover;
+      display:block;
+    }
+    .photo .cap{
+      padding: 10px 12px;
+      font-size: 12.5px;
+      color: rgba(20,20,20,.70);
+      border-top: 1px solid rgba(15,43,31,.12);
+      background: rgba(255,253,248,.86);
+    }
+
+    /* About layout */
+    .about-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .about-photo img{
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+    }
+
     /* Wood strip menu */
     .wood-strip{
       border-top: 1px solid rgba(90,62,37,.35);
@@ -350,8 +389,10 @@
       .logo img{height: 125px;}
       .grid{grid-template-columns: 1fr;}
       .split{grid-template-columns: 1fr;}
+      .photo-grid{grid-template-columns: 1fr;}
+      .about-wrap{grid-template-columns: 1fr;}
       h1{font-size: 34px;}
-      :root{ --bgPos: top center; } /* keep roof visible */
+      :root{ --bgPos: top center; }
     }
     @media (max-width: 720px){
       .toplinks{display:none;}
@@ -372,6 +413,7 @@
 
       <div class="topright">
         <nav class="toplinks" aria-label="Top navigation">
+          <a class="btn" href="#about">About</a>
           <a class="btn" href="#menu">Menu</a>
           <a class="btn primary" href="#reservations">Reservations</a>
           <a class="btn" href="#functions">Functions</a>
@@ -389,11 +431,11 @@
     <div class="container">
       <div class="hero-wrap">
         <div class="panel">
-          <div class="pill">Family-run • Outdoorsy • Warm welcome</div>
+          <div class="pill">Family-run • Country Park • Warm welcome</div>
           <h1>A cosy stop in the countryside</h1>
           <p class="lead">
-            Caffi Ceirw is a small, family-run café at Golden Grove (Gelli Aur) Country Park — perfect for coffee, cake and
-            light lunches after a walk, with space for community events and private functions too.
+            Caffi Ceirw is a small, family-run café at Golden Grove (Gelli Aur) Country Park — a relaxed place for coffee,
+            homemade bakes and light lunches after a walk. We also welcome community events and private functions.
           </p>
 
           <div class="ctas">
@@ -406,36 +448,61 @@
 
         <div class="panel soft" aria-label="Highlights">
           <div class="section-head" style="margin-bottom:0">
-            <h2 style="font-size:20px; margin:0">Welcome</h2>
-            <p style="margin:0; font-size:13px">Coffee, cakes, light lunches — and space for events.</p>
+            <h2 style="font-size:20px; margin:0">What we’re known for</h2>
+            <p style="margin:0; font-size:13px">Simple food, good coffee, and a friendly welcome.</p>
           </div>
           <ul class="list" style="margin-top:10px">
-            <li>Fresh coffee & homemade bakes</li>
-            <li>Relaxed seating with a bright conservatory feel</li>
-            <li>Ideal stop after exploring the country park</li>
+            <li>Fresh coffee & espresso drinks</li>
+            <li>Homemade cakes and sweet treats</li>
+            <li>Light lunches — including classics like a Ploughman’s</li>
           </ul>
         </div>
       </div>
 
+      <!-- About Us (new + expanded) -->
       <section id="about">
         <div class="section-head">
-          <h2>What to expect</h2>
-          <p>Natural greens and warm woods — simple, cosy, and rooted in the outdoors.</p>
+          <h2>About us</h2>
+          <p>A family-run café with tremendous support from volunteers — rooted in the community and the outdoors.</p>
         </div>
 
-        <div class="grid">
+        <div class="about-wrap">
           <div class="card">
-            <h3>Family-run café</h3>
-            <p>Friendly, personal service — a relaxed place to linger.</p>
+            <h3>Family-run, community-supported</h3>
+            <p>
+              Caffi Ceirw is proudly family-run, shaped by the people who visit and the park that surrounds us.
+              We’re incredibly grateful for the tremendous support from volunteers who help keep the café welcoming,
+              warm, and running smoothly — especially on busy days and event nights.
+            </p>
+            <p style="margin-top:10px;">
+              Whether you’re stopping in after a walk, meeting friends, or joining one of our themed evenings, we aim to
+              offer a friendly atmosphere and simple, satisfying food.
+            </p>
           </div>
-          <div class="card">
-            <h3>Great for groups</h3>
-            <p>Space for meet-ups, clubs, and family gatherings.</p>
-          </div>
-          <div class="card">
-            <h3>Community events</h3>
-            <p>From themed food nights to fairs and music — there’s room for ideas.</p>
-          </div>
+
+          <!-- NOTE: filename contains a space, so we use %20 -->
+          <figure class="photo about-photo" style="margin:0;">
+            <img src="./ceirw%20family.jpg" alt="Caffi Ceirw team and volunteers">
+            <figcaption class="cap">A café built with family spirit — and amazing volunteer support.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Subtle food/coffee images “dotted around” -->
+        <div class="photo-grid" aria-label="Café highlights photos">
+          <figure class="photo" style="margin:0;">
+            <img src="./ceirwcoffee.jpg" alt="Coffee at Caffi Ceirw">
+            <figcaption class="cap">Coffee & espresso — the perfect post-walk warm-up.</figcaption>
+          </figure>
+
+          <figure class="photo" style="margin:0;">
+            <img src="./ceirwcake.jpg" alt="Cake at Caffi Ceirw">
+            <figcaption class="cap">Homemade bakes and sweet treats.</figcaption>
+          </figure>
+
+          <figure class="photo" style="margin:0;">
+            <img src="./ceirwploughmans.jpg" alt="Ploughman’s lunch at Caffi Ceirw">
+            <figcaption class="cap">Light lunches — including classic favourites.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -451,7 +518,7 @@
               <div class="menu-item">Coffee & espresso drinks</div>
               <div class="menu-item">Tea & seasonal specials</div>
               <div class="menu-item">Soup of the day</div>
-              <div class="menu-item">Sandwiches & light lunches</div>
+              <div class="menu-item">Sandwiches & light lunches (including a Ploughman’s)</div>
               <div class="menu-item">Homemade cakes & sweet treats</div>
             </div>
 
